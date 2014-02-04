@@ -21,18 +21,21 @@
 			<g:hasErrors bean="${instrumentTypesInstance}">
 			<ul class="errors" role="alert">
 				<g:eachError bean="${instrumentTypesInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+				<li><g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:instrumentTypesInstance, action:'save']" >
+			
+			<g:formRemote name="instrumentTypes" url="[controller:'instrumentTypes', action:'save']" update="update">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" />
 				</fieldset>
-			</g:form>
+				<input type="button" id="ajaxit" value="AJAXIT">
+			</g:formRemote>
+			<div id="update"></div>
 		</div>
 	</body>
 </html>
