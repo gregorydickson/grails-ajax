@@ -29,14 +29,21 @@
 		$(document).ready(function (){
 			$('#ajaxit').click(function(){
 				console.log('ajaxit');
+				console.log("postJSON is " + JSON.stringify($('#instrumentTypes').serializeArray()));
 				jQuery.ajax({type:'POST',
-					data:jQuery('#instrumentTypes').serialize(),
-				 	url:'/ajax/instrumentTypes/save',
+					data:jQuery('#instrumentTypes').serializeArray(),
+					dataType: 'json',
+				 	url:'${g.createLink(controller:'instrumentTypes',action:'save.json')}',
 				 	success:function(data,textStatus){
 					 jQuery('#update').html(data);
+					 console.log("RETURN JSON: " + data);
 				 	},
 				 	error:function(XMLHttpRequest,textStatus,errorThrown){
-				 	}
+						console.log("ERROR: " + errorThrown);
+				 	},
+				    complete: function() {
+						console.log("COMPLETE")
+				    }
 		 		});
 			});
 		});

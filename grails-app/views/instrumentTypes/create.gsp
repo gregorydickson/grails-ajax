@@ -26,15 +26,13 @@
 			</ul>
 			</g:hasErrors>
 			
-			<g:formRemote name="instrumentTypes" url="[controller:'instrumentTypes', action:'save']" update="update">
+			<form id="instrumentTypes">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" />
-				</fieldset>
+
 				<input type="button" id="ajaxit" value="AJAXIT">
-			</g:formRemote>
+			</form>
 			<div id="update"></div>
 		</div>
 	</body>
